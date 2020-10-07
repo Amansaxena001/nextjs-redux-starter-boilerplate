@@ -36,4 +36,7 @@ const NewsReader = () => {
   );
 };
 
+//mapStateToProps for CRA 
+//propTypes 
+
 export default connect()(NewsReader);
