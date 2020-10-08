@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_NEWS, ERROR_NEWS, LOADING } from "./action.types";
+import { GET_NEWS, ERROR_NEWS, LOADING } from "./types";
 
 export const getNews = (searchData) => async (dispatch) => {
   try {

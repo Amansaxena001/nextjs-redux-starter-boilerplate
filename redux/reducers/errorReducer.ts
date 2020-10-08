@@ -1,4 +1,4 @@
-import { ERROR_NEWS } from "../Actions/action.types";
+import { ERROR_NEWS } from "../Actions/types";
 
 const initialState = {
   msg: {},
@@ -7,12 +7,13 @@ const initialState = {
 };
 
 export const errorReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case ERROR_NEWS:
       return {
-        msg: action.payload.msg,
-        status: action.payload.status,
-        id: action.payload.id,
+        msg: payload.msg,
+        status: payload.status,
+        id: payload.id,
       };
 
     default:

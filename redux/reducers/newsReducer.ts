@@ -1,4 +1,4 @@
-import { GET_NEWS } from "../Actions/action.types";
+import { GET_NEWS } from "../Actions/types";
 
 const initialState = {
   news: [],
@@ -7,11 +7,12 @@ const initialState = {
 };
 
 export const newsReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case GET_NEWS:
       return {
         ...state,
-        news: action.payload,
+        news: payload,
         loading: false,
         error: null,
       };

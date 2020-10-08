@@ -4,7 +4,7 @@ import { AudioOutlined } from "@ant-design/icons";
 import styles from "./news.module.scss";
 import { types } from "util";
 import { connect } from "react-redux";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import { getNews } from "../../redux/Actions/actions";
 
 // interface values {
@@ -36,4 +36,14 @@ const NewsReader = () => {
   );
 };
 
-export default connect()(NewsReader);
+NewsReader.propTypes = {
+  getNews: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    items: state.news,
+  };
+};
+
+export default connect(mapStateToProps, { getNews })(NewsReader);
