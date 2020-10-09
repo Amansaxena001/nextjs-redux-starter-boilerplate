@@ -11,24 +11,20 @@ import { getNews } from "../../redux/Actions/actions";
 //   key: string;
 // }
 const { Search } = Input;
-const NewsReader = () => {
+const NewsReader = ({items , getNewsHandler}) => {
   const [key, setKey] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(key);
-    getNews(key);
+  const handleSubmit = () => {
+    getNewsHandler(key);
   };
 
   return (
     <div className={styles.container}>
       <Search
         placeholder="input search text"
-        onSearch={(value) => console.log(value)}
+        onSearch={handleSubmit}
         enterButton
         style={{ width: 400 }}
         onChange={(e) => setKey(e.target.value)}
-        onSubmit={handleSubmit}
       />
       <br />
       <br />
@@ -37,7 +33,7 @@ const NewsReader = () => {
 };
 
 NewsReader.propTypes = {
-  getNews: PropTypes.func.isRequired,
+  getNewsHandler: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -46,4 +42,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getNews })(NewsReader);
+const mapDispatchToProps =(dispatch) => {
+  return({
+    getNewsHandler: text => {dispatch(getNews(text))}
+  })
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(NewsReader);
