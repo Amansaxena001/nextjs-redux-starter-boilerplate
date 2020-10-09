@@ -5,7 +5,7 @@ export const getNews = (searchData) => async (dispatch) => {
   try {
     const res = await axios.get(
       "http://newsapi.org/v2/everything?" +
-        `q=${searchData}` +
+        `q=${searchData}&` +
         "from=2020-10-07&" +
         "sortBy=popularity&" +
         "apiKey=b2515663b65c4bd790035d61eefa21ed"
@@ -14,7 +14,6 @@ export const getNews = (searchData) => async (dispatch) => {
       type: GET_NEWS,
       payload: res.data,
     });
-    console.log(res.data);
   } catch (error) {
     dispatch({
       type: ERROR_NEWS,

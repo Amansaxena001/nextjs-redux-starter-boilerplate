@@ -11,9 +11,9 @@ export const errorReducer = (state = initialState, action) => {
   switch (type) {
     case ERROR_NEWS:
       return {
-        msg: payload.msg,
-        status: payload.status,
-        id: payload.id,
+        msg: payload,
+        status: payload,
+        id: payload,
       };
 
     default:
